@@ -16,7 +16,7 @@
 		/*text-align: center;*/
 
 	}
-	p{
+	p,label{
 		font-weight: bolder;
 		font-family: helvetica, sans-serif;
 		margin-bottom: 5px;
@@ -52,27 +52,27 @@
 	<form action="" method="">
 		<div>
 			<h2>Region</h2>
-			<p>Fullname:</p>
+			<label for="name">Fullname:</label>
 			<input type="text" placeholder="name" name="name" id="1" value="" required>
-			<p>average age:</p>
+			<label for="avgAge">average age:</label>
 			<input type="number" placeholder="enter average age" name="avgAge" id="2" value="" required>
-			<p>average daily income in USD:</p>
+			<label for="avgDailyIncomeInUSD">average daily income in USD:</label>
 			<input type="number" placeholder="enter average daily income in USD" name="avgDailyIncomeInUSD" id="3" value="" required>
-			<p>average daily income in population:</p>
+			<label for="avgDailyIncomePopulation">average daily income in population:</label>
 			<input type="number" placeholder="enter average daily income in population" name="avgDailyIncomePopulation" id="4" value="" required>
-			<p>Period:</p>
+			<label for="data-period-type">Period:</label>
 			<select name="data-period-type" id="5" required>
 				<option value="days">days</option>
 				<option value="weeks">weeks</option>
 				<option value="months">months</option>
 			</select>
-			<p>Time to elapse:</p>
+			<label for="data-time-to-elapse">Time to elapse:</label>
 			<input type="number" placeholder="enter time" name="data-time-to-elapse" id="6" value="" required>
-			<p>Reported cases:</p>
+			<label for="data-reported-cases">Reported cases:</label>
 			<input type="number" placeholder="enter value of reported cases" name="data-reported-cases" id="7" value="" required>
-			<p>population:</p>
+			<label for="data-population">population:</label>
 			<input type="number" placeholder="enter population" name="data-population" id="8" value="" required>
-			<p>Total hospital beds:</p>
+			<label for="data-total-hospital-beds">Total hospital beds:</label>
 			<input type="number" placeholder="enter total hospital beds" name="data-total-hospital-beds" id="9" value="" required>
 			<p><input id="b" type="Submit" value="data go estimate" onclick="go()" name="data-go-estimate"></p>
 		</div>
