@@ -58,11 +58,11 @@
 			<label for="1">Fullname:</label>
 			<input type="text" placeholder="name" name="name" id="1" value="" required>
 			<label for="2">average age:</label>
-			<input type="number" placeholder="enter average age" name="avgAge" id="2" value="" required>
+			<input type="text" placeholder="enter average age" name="avgAge" id="2" value="" required>
 			<label for="3">average daily income in USD:</label>
-			<input type="number" placeholder="enter average daily income in USD" name="avgDailyIncomeInUSD" id="3" value="" required>
+			<input type="text" placeholder="enter average daily income in USD" name="avgDailyIncomeInUSD" id="3" value="" required>
 			<label for="4">average daily income in population:</label>
-			<input type="number" placeholder="enter average daily income in population" name="avgDailyIncomePopulation" id="4" value="" required>
+			<input type="text" placeholder="enter average daily income in population" name="avgDailyIncomePopulation" id="4" value="" required>
 			<label for="5">Period:</label>
 			<select name="data-period-type" id="5" required>
 				<option value="days">days</option>
@@ -106,54 +106,56 @@
 		data.reportedCases = Number(document.getElementById('7').value);
 		data.population = Number(document.getElementById('8').value);
 		data.totalHospitalBeds = Number(document.getElementById('9').value);
-		console.log(data);
+		const result = JSON.stringify(data);
+		// console.log(result);
 		// document.getElementById('show').innerHTML = name;
-		const answer = covid19ImpactEstimator(data);
-		console.log(answer);
+		// const answer = covid19ImpactEstimator(result);
+		// const ans = JSON.stringify(answer);
+		// console.log(ans);
 	}
 
-	const covid19ImpactEstimator = (data) => {
-  const impact = {};
-  const severeImpact = {};
-  const beds = 0.35 * data.totalHospitalBeds;
-  const income = data.region.avgDailyIncomeInUSD;
-  const population = data.region.avgDailyIncomePopulation;
-  if (data.periodType === 'weeks') {
-    data.timeToElapse *= 7;
-  } else if (data.periodType === 'months') {
-    data.timeToElapse *= 30;
-  }
-  const days = data.timeToElapse;
-  const factor = Math.trunc(days / 3);
-  impact.currentlyInfected = data.reportedCases * 10;
-  severeImpact.currentlyInfected = data.reportedCases * 50;
-  impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
-  severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
-  impact.severeCasesByRequestedTime = 0.15 * impact.infectionsByRequestedTime;
-  severeImpact.severeCasesByRequestedTime = 0.15 * severeImpact.infectionsByRequestedTime;
+// 	const covid19ImpactEstimator = (data) => {
+//   const impact = {};
+//   const severeImpact = {};
+//   const beds = 0.35 * data.totalHospitalBeds;
+//   const income = data.region.avgDailyIncomeInUSD;
+//   const population = data.region.avgDailyIncomePopulation;
+//   if (data.periodType === 'weeks') {
+//     data.timeToElapse *= 7;
+//   } else if (data.periodType === 'months') {
+//     data.timeToElapse *= 30;
+//   }
+//   const days = data.timeToElapse;
+//   const factor = Math.trunc(days / 3);
+//   impact.currentlyInfected = data.reportedCases * 10;
+//   severeImpact.currentlyInfected = data.reportedCases * 50;
+//   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
+//   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
+//   impact.severeCasesByRequestedTime = 0.15 * impact.infectionsByRequestedTime;
+//   severeImpact.severeCasesByRequestedTime = 0.15 * severeImpact.infectionsByRequestedTime;
 
-  const impactCases = impact.severeCasesByRequestedTime;
-  const severeCases = severeImpact.severeCasesByRequestedTime;
-  impact.hospitalBedsByRequestedTime = Math.ceil(beds - impactCases);
-  severeImpact.hospitalBedsByRequestedTime = Math.ceil(beds - severeCases);
+//   const impactCases = impact.severeCasesByRequestedTime;
+//   const severeCases = severeImpact.severeCasesByRequestedTime;
+//   impact.hospitalBedsByRequestedTime = Math.ceil(beds - impactCases);
+//   severeImpact.hospitalBedsByRequestedTime = Math.ceil(beds - severeCases);
 
-  const severeImpactInfections = severeImpact.infectionsByRequestedTime;
-  impact.casesForICUByRequestedTime = Math.floor(0.05 * impact.infectionsByRequestedTime);
-  severeImpact.casesForICUByRequestedTime = Math.floor(0.05 * severeImpactInfections);
+//   const severeImpactInfections = severeImpact.infectionsByRequestedTime;
+//   impact.casesForICUByRequestedTime = Math.floor(0.05 * impact.infectionsByRequestedTime);
+//   severeImpact.casesForICUByRequestedTime = Math.floor(0.05 * severeImpactInfections);
 
-  impact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * impact.infectionsByRequestedTime);
-  severeImpact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * severeImpactInfections);
+//   impact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * impact.infectionsByRequestedTime);
+//   severeImpact.casesForVentilatorsByRequestedTime = Math.floor(0.02 * severeImpactInfections);
 
-  const severeInfectionsByRequestedTime = severeImpact.infectionsByRequestedTime;
-  // eslint-disable-next-line max-len
-  impact.dollarsInFlight = Math.floor((impact.infectionsByRequestedTime * income * population) / days);
-  const sol = Math.floor((severeInfectionsByRequestedTime * income * population) / days);
-  severeImpact.dollarsInFlight = sol;
-  return {
-    data,
-    impact,
-    severeImpact
-  };
-};
+//   const severeInfectionsByRequestedTime = severeImpact.infectionsByRequestedTime;
+//   // eslint-disable-next-line max-len
+//   impact.dollarsInFlight = Math.floor((impact.infectionsByRequestedTime * income * population) / days);
+//   const sol = Math.floor((severeInfectionsByRequestedTime * income * population) / days);
+//   severeImpact.dollarsInFlight = sol;
+//   return {
+//     data,
+//     impact,
+//     severeImpact
+//   };
+// };
 
 </script>
