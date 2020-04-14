@@ -8,78 +8,174 @@
 	<title>Forms</title>
 	<style>
 	form{
+		/*background-color: rgba(255, 255, 255, 0.5);*/
 		background-color: white;
-		color: black;
-		border-radius: 20px;
-		width: 30%;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 50px;
+		box-shadow: 0px 2px 5px black;
+		/*color: black;*/
 		padding: 2%;
+		color: #a2155b;
+		border-bottom-left-radius: 20px;
+		border-top-left-radius: 20px;
 		/*text-align: center;*/
 
+	}
+	::placeholder{
+		color: #a2155b;
+	}
+	select{
+		border-radius: 5px;
 	}
 	p,label{
 		font-weight: bolder;
 		font-family: helvetica, sans-serif;
-		margin-bottom: 5px;
+		/*margin-bottom: 40px;*/
 	}
-	div{
+	form div{
 		margin-left: auto;
 		margin-right: auto;
 		/*background-color: yellow;*/
 		width: 80%;
 	}
 	input,textarea,option,select{
-		border: 1.2px solid silver;
+		border-top: 0;border-left: 0;border-right: 0;
+		border-bottom: 1.2px solid #138fb7;
+		background-color: rgba(255, 255, 255, 0.3);
+		margin-bottom: 1.5vw;
 		padding: 8px;
-		border-radius: 5px;
+		color: #a2155b;
+		/*border-radius: 5px;*/
 		width: 100%;
 	}
 	#b{
-		background-color: #1f1fff;
+		background-color: #138fb7;
 		font-size: 15px;
 		font-weight: bolder;
 		color: white;
+		/*border-bottom-left-radius: 20px;*/
 		margin-right: 15%;
 		text-align: center;
 		margin-left: 10px;
 	}
 	body{
-		background-color: #2121f9;
+		/*background-color: #2121f9;*/
+		background-image: url(img/coronavirus-thumb-l.png);
+		background-repeat: no-repeat; /* Do not repeat the image */
+  		background-size: cover;
+		font-family: helvetica, sans-serif;
+		width: 99%;
+	}
+	#main{
+		/*opacity: 0.3;*/
+		padding: 2% 2% 2% 2%;
+		/*margin-top: 0;*/
+		/*background-color: yellow;*/
+		clear: both;
+	}
+	#ban{
+		background-color: rgba(198, 63, 117, 1);
+		width: 80%;
+		margin: 0;
+		border-radius: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		/*margin-top: 50px;*/
+	}
+	#info{
+		float: right;
+		width: 48%;
+		/*background-color: green;*/
+		margin: 0;
+		padding: 2%;
+		/*opacity: 1;*/
+
+	}
+	#message{
+		margin-top: 20%;
+		height: 100%;
+		overflow: hidden;
+		color: #202023;
+	}
+	#form{
+		/*float: right;*/
+		width: 48%;
+		/*margin-top: 0;*/
+	}
+	#top{
+		/*background-color: green;*/
+		text-align: right;
+		color: white;
+		/*text-transform: uppercase;*/
+		text-shadow:2px 2px 5px #a2155b;
+		font-weight: bolder;font-size: 1.7vw;
+		margin-right: 10px;
+		padding-top: 0;
+		/*margin-bottom: 0;*/
+	}
+	#message h1{
+		font-size: 3vw;
+		margin-top: 0;
+		font-weight: bolder;
+	}
+	#message h2{
+		font-size: 1.8vw;
+		font-weight: bolder;
+	}
+	#message h4{
+		font-size: 1.2vw;
+		font-weight: bolder;
 	}
 	</style>
 </head>
 <body>
 	<!-- <p id="show"></p> -->
-	<form action="" method="">
-		<div>
-			<h2>Region</h2>
-			<label for="1">Fullname:</label>
-			<input type="text" placeholder="name" name="name" id="1" value="" required>
-			<label for="2">average age:</label>
-			<input type="number" placeholder="enter average age" name="avgAge" id="2" value="" required>
-			<label for="3">average daily income in USD:</label>
-			<input type="number" placeholder="enter average daily income in USD" name="avgDailyIncomeInUSD" id="3" value="" required>
-			<label for="4">average daily income in population:</label>
-			<input type="number" placeholder="enter average daily income in population" name="avgDailyIncomePopulation" id="4" value="" required>
-			<label for="5">Period:</label>
-			<select name="data-period-type" data-period-type="" id="5" required>
-				<option value="days">days</option>
-				<option value="weeks">weeks</option>
-				<option value="months">months</option>
-			</select>
-			<label for="6">Time to elapse:</label>
-			<input type="number" placeholder="enter time" data-time-to-elapse="" name="data-time-to-elapse" id="6" value="" required>
-			<label for="7">Reported cases:</label>
-			<input type="number" placeholder="enter value of reported cases" name="data-reported-cases" data-reported-cases="" id="7" value="" required>
-			<label for="8">population:</label>
-			<input type="number" placeholder="enter population" data-population="" name="data-population" id="8" value="" required>
-			<label for="9">Total hospital beds:</label>
-			<input type="number" placeholder="enter total hospital beds" name="data-total-hospital-beds" data-total-hospital-beds="" id="9" value="" required>
-			<p><input id="b" type="Submit" value="Submit" data-go-estimate="" onclick="go()" name="data-go-estimate"></p>
+	<div id="ban">
+		
+		<div id="main">
+			<div id="info">
+				<div id="top"><h1>COVID-19<sub>estimator</sub></h1></div>
+			<div id="message">
+				<h1>Welcome ...</h1>
+				<h2>The assessment empowers us to attempt helping society and leaders prepare for the real big problem of COVID-19, which is its impact on lives, health systems, supply chains, and the economy:</h2>
+				<h4>
+					<ol>
+						<li>Too many patients, not enough hospitals and beds. A serious shortage of ventilators, masks and other PPE - if we donʼt practice social distancing.</li>
+						<li>Job losses or freezes, low cash flow and low production (even for essentials like food). These and more from too many people being sick, a sizable number dying (including some of the best people in many fields), and many others affected by the impact of losing loved ones or a world operating in slow motion</li>
+					</ol>
+				</h4>
+			</div>
 		</div>
-	</form>
+		<div id="form">
+			<form action="" method="">
+				<div>
+					<h2>Data</h2>
+					<label for="1">Fullname:</label>
+					<input type="text" placeholder="name" name="name" id="1" value="" required>
+					<label for="2">average age:</label>
+					<input type="number" placeholder="enter average age" name="avgAge" id="2" value="" required>
+					<label for="3">average daily income in USD:</label>
+					<input type="number" placeholder="enter average daily income in USD" name="avgDailyIncomeInUSD" id="3" value="" required>
+					<label for="4">average daily income in population:</label>
+					<input type="number" placeholder="enter average daily income in population" name="avgDailyIncomePopulation" id="4" value="" required>
+					<label for="5">Period:</label>
+					<select name="data-period-type" data-period-type="" id="5" required>
+						<option value="days"><p style="color:#a2155b">days</p></option>
+						<option value="weeks">weeks</option>
+						<option value="months">months</option>
+					</select>
+					<label for="6">Time to elapse:</label>
+					<input type="number" placeholder="enter time" data-time-to-elapse="" name="data-time-to-elapse" id="6" value="" required>
+					<label for="7">Reported cases:</label>
+					<input type="number" placeholder="enter value of reported cases" name="data-reported-cases" data-reported-cases="" id="7" value="" required>
+					<label for="8">population:</label>
+					<input type="number" placeholder="enter population" data-population="" name="data-population" id="8" value="" required>
+					<label for="9">Total hospital beds:</label>
+					<input type="number" placeholder="enter total hospital beds" name="data-total-hospital-beds" data-total-hospital-beds="" id="9" value="" required>
+					<p><input id="b" type="Submit" value="Submit" data-go-estimate="" onclick="go()" name="data-go-estimate"></p>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
 </body>
 </html>
 <script>
